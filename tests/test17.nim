@@ -12,6 +12,7 @@ var
     </ColorRect>
   </Node>"""
   scene = xml2node(xmlstr)
+scene.addChild(xmlfile2node("xml.xml"))
 
 assert scene.name == "Scene"
 assert scene.getNode("Node/Hello").name == "Hello"

@@ -2,7 +2,6 @@
 import
   ../core/color,
   ../core/vector2,
-  ../core/nim_object,
   ../core/enums,
 
   ../thirdparty/opengl,

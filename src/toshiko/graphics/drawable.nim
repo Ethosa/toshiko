@@ -54,36 +54,40 @@ template vd = discard
 
 template recalc =
   # left top
-  vertex.add(Vector2(x, y - self.border_radius_lefttop))
+  var t = self.border_radius_lefttop
+  vertex.add(Vector2(x, y - t))
   for i in 0..self.border_detail_lefttop:
     let angle = TAU*(i/self.border_detail_lefttop)
     if angle >= PI and angle <= PI+PI/2:
-      vertex.add(Vector2(x + self.border_radius_lefttop + self.border_radius_lefttop*cos(angle), y - self.border_radius_lefttop - self.border_radius_lefttop*sin(angle)))
-  vertex.add(Vector2(x + self.border_radius_lefttop, y))
+      vertex.add(Vector2(x + t + t*cos(angle), y - t - t*sin(angle)))
+  vertex.add(Vector2(x + t, y))
 
   # right top
-  vertex.add(Vector2(x + width - self.border_radius_righttop, y))
+  t = self.border_radius_righttop
+  vertex.add(Vector2(x + width - t, y))
   for i in 0..self.border_detail_righttop:
     let angle = TAU*(i/self.border_detail_righttop)
     if angle >= PI+PI/2 and angle <= TAU:
-      vertex.add(Vector2(x + width - self.border_radius_righttop + self.border_radius_righttop*cos(angle), y - self.border_radius_righttop - self.border_radius_righttop*sin(angle)))
-  vertex.add(Vector2(x + width, y - self.border_radius_righttop))
+      vertex.add(Vector2(x + width - t + t*cos(angle), y - t - t*sin(angle)))
+  vertex.add(Vector2(x + width, y - t))
 
   # right bottom
-  vertex.add(Vector2(x + width, y - height + self.border_radius_rightbottom))
+  t = self.border_radius_rightbottom
+  vertex.add(Vector2(x + width, y - height + t))
   for i in 0..self.border_detail_rightbottom:
     let angle = TAU*(i/self.border_detail_rightbottom)
     if angle >= 0 and angle <= PI/2:
-      vertex.add(Vector2(x + width - self.border_radius_rightbottom + self.border_radius_rightbottom*cos(angle), y - height + self.border_radius_rightbottom - self.border_radius_rightbottom*sin(angle)))
-  vertex.add(Vector2(x + width - self.border_radius_rightbottom, y - height))
+      vertex.add(Vector2(x + width - t + t*cos(angle), y - height + t - t*sin(angle)))
+  vertex.add(Vector2(x + width - t, y - height))
 
   # left bottom
-  vertex.add(Vector2(x + self.border_radius_leftbottom, y - height))
+  t = self.border_radius_leftbottom
+  vertex.add(Vector2(x + t, y - height))
   for i in 0..self.border_detail_leftbottom:
     let angle = TAU*(i/self.border_detail_leftbottom)
     if angle >= PI/2 and angle <= PI:
-      vertex.add(Vector2(x + self.border_radius_leftbottom + self.border_radius_leftbottom*cos(angle), y - height + self.border_radius_leftbottom - self.border_radius_leftbottom*sin(angle)))
-  vertex.add(Vector2(x, y - height + self.border_radius_leftbottom))
+      vertex.add(Vector2(x + t + t*cos(angle), y - height + t - t*sin(angle)))
+  vertex.add(Vector2(x, y - height + t))
 
 
 template draw_template(drawtype, color, function, secondfunc: untyped): untyped =

@@ -2,8 +2,7 @@
 import
   strutils,
   ../core/enums,
-  ../core/input,
-  ../core/nim_object
+  ../core/input
 
 
 type
@@ -25,8 +24,6 @@ type
     on_ready*: NodeHandler  ## Called after `on_enter`.
     on_process*: NodeHandler  ## Called every tick.
     on_input*: NodeInputHandler
-
-    properties*: NimRef  ## Custom properties. You can change it at any time.
   NodeRef* = ref NodeObj
 
 var
@@ -49,8 +46,6 @@ template nodepattern*(t: untyped) =
   result.on_process = standard_handler
 
   result.on_input = standard_input_handler
-
-  result.properties = nimtype()
 
 
 proc Node*(name: string = "Node"): NodeRef =

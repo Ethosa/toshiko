@@ -1,6 +1,5 @@
 import
   core/enums,
-  core/nim_object,
   core/color,
   core/vector2,
   core/stylesheet,
@@ -14,6 +13,6 @@ import
   core/audio_stream
 
 export
-  enums, nim_object, color, vector2, stylesheet,
+  enums, color, vector2, stylesheet,
   input, rect2, anchor, image, mathcore, font,
   global_settings, audio_stream

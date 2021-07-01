@@ -1,5 +1,7 @@
 # author: Ethosa
-import macros
+import
+  macros,
+  strutils
 
 
 type
@@ -10,6 +12,10 @@ type
 
 proc StyleSheet*(arg: seq[tuple[key, value: string]] = @[]): StyleSheetRef =
   StyleSheetRef(dict: arg)
+
+proc StyleSheet*(arg: string): StyleSheetRef =
+  let tmp = arg.split(Whitespace)
+  StyleSheetRef(dict: @[(tmp[0], tmp[1])])
 
 proc StyleSheet*(arg: openarray[tuple[key, value: string]]): StyleSheetRef =
   var res: seq[tuple[key, value: string]] = @[]

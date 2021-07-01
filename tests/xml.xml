@@ -1,0 +1,10 @@
+<GridBox row="2" style="background-color black" rect_position="256 256">
+  <ColorRect color="red">
+  </ColorRect>
+  <ColorRect color="yellow">
+  </ColorRect>
+  <ColorRect color="green">
+  </ColorRect>
+  <ColorRect color="blue">
+  </ColorRect>
+</GridBox>

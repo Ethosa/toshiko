@@ -39,6 +39,5 @@ build:
       progress_type: PROGRESS_BAR_CIRCLE
       indeterminate: true
 
-
 addMainScene(main)
 showWindow()

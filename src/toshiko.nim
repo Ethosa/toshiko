@@ -17,7 +17,7 @@ export
 
 
 # Read config
-if existsFile("global_settings.toshiko"):
+if fileExists("global_settings.toshiko"):
   var
     cfg = loadConfig("global_settings.toshiko")
     w: cint = 640

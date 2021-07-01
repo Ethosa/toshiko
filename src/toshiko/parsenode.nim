@@ -107,6 +107,14 @@ template loadval(fn, get_float_func, get_string_func, float_array: untyped) =
     `fn`(level[^1].ControlRef.setSizeAnchor(Vector2(`get_float_func`(tmp[0]), `get_float_func`(tmp[1]))))
   of "stream":
     `fn`(level[^1].AudioStreamPlayerRef.setStream(`get_string_func`(value)))
+  of "cell_size":
+    let tmp = `float_array`
+    `fn`(level[^1].GridBoxRef.setCellSize(Vector2(`get_float_func`(tmp[0]), `get_float_func`(tmp[1]))))
+  of "row":
+    let tmp = `float_array`
+    `fn`(level[^1].GridBoxRef.setRow(`get_float_func`(tmp[0]).int))
+  of "style":
+    `fn`(level[^1].ControlRef.setStyle(StyleSheet(`get_string_func`(value))))
   else:
     discard
 
@@ -172,6 +180,18 @@ proc xml2node*(src: string): SceneRef =
   result = Scene()
   var
     jobj = parseXml(src)
+    level: seq[NodeRef] = @[]
+  level.add(result)
+  addXmlNode(level, jobj)
+
+proc xmlfile2node*(src: string): SceneRef =
+  ## COnverts XML string to he new Scene object.
+  ##
+  ## Arguments:
+  ## - `src` is a source XML string.
+  result = Scene()
+  var
+    jobj = loadXml(src)
     level: seq[NodeRef] = @[]
   level.add(result)
   addXmlNode(level, jobj)

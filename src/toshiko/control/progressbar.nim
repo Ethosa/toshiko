@@ -145,3 +145,12 @@ method setValue*(self: ProgressBarRef, val: int) {.base.} =
   ## Changes progress bar value, if 0 < `val` < `max_value`.
   if val > 0 and val < self.max_value:
     self.value = val
+
+method setStyle*(self: ProgressBarRef, s: StyleSheetRef) =
+  procCall self.ControlRef.setStyle(s)
+  for i in s.dict:
+    case i.key
+    of "progress-color":
+      self.setProgressColor(Color(i.value))
+    else:
+      discard
