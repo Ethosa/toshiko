@@ -1,15 +1,20 @@
-# --- Test 3. use custom properties --- #
+# --- Test 4. Use Canvas. --- #
 import toshiko
 
 
-var
-  test_node = Node()
+Window("Test 4")
 
-test_node.properties["test"] = 123
-assert test_node.properties["test"].int == 123
+var scene = Scene()
+var canvas = Canvas()
 
-test_node.properties["test"] = "test string"
-assert test_node.properties["test"].string == "test string"
 
-test_node.properties["my array"] = tonimobj(@[1, 0.1, true, "test"])
-assert test_node.properties["my array"].len() == 4
+scene.addChild(canvas)
+
+canvas.fill(Color("#a8f9da"))
+canvas.pixel(25, 25, Color("#f6f"))
+canvas.line(32, 32, 128, 256, Color("#4aa"))
+canvas.rect(32, 128, 128, 256, Color("#a44"))
+canvas.circle(256, 256, 64, Color("#64a"), detail = 180)
+
+addMainScene(scene)
+showWindow()

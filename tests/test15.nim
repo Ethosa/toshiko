@@ -1,27 +1,21 @@
-# --- Test 15. Build nodes with YML-like syntax. --- #
+# --- Test 17. Convert XML string to the Scene. --- #
 import toshiko
 
 
-Window("Test 15")
+Window("Test 17")
 
-build:
-  - Scene main:
-    name: "hello"
-    - ColorRect rect:
-      - ColorRect rect1:
-        color: Color("#d77")
-        rect_position: Vector2(64, 64)
+var
+  xmlstr = """<Node>
+    <ColorRect name="Hello" color="#f6f" rect_size="128 64">
+      <ColorRect color="turquoise">
+      </ColorRect>
+    </ColorRect>
+  </Node>"""
+  scene = xml2node(xmlstr)
+scene.addChild(xmlfile2node("xml.xml"))
 
-rect1@on_ready(self):
-  echo "ready lol :p"
+assert scene.name == "Scene"
+assert scene.getNode("Node/Hello").name == "Hello"
 
-rect1@on_hover(self, x, y):
-  rect1.setColor(Color("#84f"))
-
-rect1@on_out(self, x, y):
-  rect1.setColor(Color("#d77"))
-
-assert rect1.parent.parent.name == main.name
-
-addMainScene(main)
+addMainScene(scene)
 showWindow()

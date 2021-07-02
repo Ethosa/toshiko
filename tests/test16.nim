@@ -1,29 +1,28 @@
-# --- Test 16. Convert JSON string to the Scene. --- #
+# --- Test 18. Use VBox and HBox objects. --- #
 import toshiko
 
+Window("Test 18")
 
-Window("Test 16")
+build:
+  - Scene main:
+    - VBox vbox:
+      separator: 4f  # space between children
+      - ColorRect vrect1:
+        color: Color("#d6f")
+      - ColorRect vrect2:
+        color: Color("#6fd")
+      - ColorRect vrect3:
+        color: Color("#fd6")
+    - HBox hbox:
+      separator: 8f  # space between children
+      - ColorRect hrect1:
+        color: Color("#d6f")
+      - ColorRect hrect2:
+        color: Color("#6fd")
+      - ColorRect hrect3:
+        color: Color("#fd6")
 
-var
-  jsonstring = """{
-    "ColorRect": {
-        "name": "rect1",
-        "color": "#f6f",
-        "rect_size": [128, 64],
-        "children": [
-          {
-            "ColorRect": {
-              "name": "rect2",
-              "color": "pastelgreen"
-            }
-          }
-        ]
-      }
-  }"""
-  scene = json2node(jsonstring)
+hbox.move(64, 0)
 
-assert scene.name == "Scene"
-assert scene.getNode("rect1/rect2").name == "rect2"
-
-addMainScene(scene)
+addMainScene(main)
 showWindow()

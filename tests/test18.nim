@@ -1,28 +1,33 @@
-# --- Test 18. Use VBox and HBox objects. --- #
+# --- Test 20. Use GridBox object. --- #
 import toshiko
 
-Window("Test 18")
+
+Window("Test 20")
+setBackgroundColor(Color("#fed"))
+
 
 build:
   - Scene main:
-    - VBox vbox:
-      separator: 4f  # space between children
-      - ColorRect vrect1:
-        color: Color("#d6f")
-      - ColorRect vrect2:
-        color: Color("#6fd")
-      - ColorRect vrect3:
-        color: Color("#fd6")
-    - HBox hbox:
-      separator: 8f  # space between children
-      - ColorRect hrect1:
-        color: Color("#d6f")
-      - ColorRect hrect2:
-        color: Color("#6fd")
-      - ColorRect hrect3:
-        color: Color("#fd6")
-
-hbox.move(64, 0)
+    - GridBox grid1:
+      - ColorRect rect1_1:
+        color: Color("#f6f")
+      - ColorRect rect1_2:
+        color: Color("#d87")
+      - ColorRect rect1_3:
+        color: Color("#cd7")
+      - ColorRect rect1_4:
+        color: Color("#f7a")
+    - GridBox grid2:
+      row: 2  # row count. default value is 3.
+      position_anchor: Anchor(1, 0, 1, 0)
+      - ColorRect rect2_1:
+        color: Color("#f6f")
+      - ColorRect rect2_2:
+        color: Color("#d87")
+      - ColorRect rect2_3:
+        color: Color("#cd7")
+      - ColorRect rect2_4:
+        color: Color("#f7a")
 
 addMainScene(main)
 showWindow()

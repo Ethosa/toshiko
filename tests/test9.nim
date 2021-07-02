@@ -1,23 +1,24 @@
-# --- Test 9. Handle Control events. --- #
+# --- Test 11. Use Image in Drawable. --- #
 import toshiko
 
 
-Window("Test 9")
+Window("Test 11")
 
 var
   scene = Scene()
-  ctrl = Control()
+  image = load("assets/1.jpg")
+  rect = ColorRect()
 
-ctrl.resize(64, 64)
-ctrl@on_process(self):
-  var s = self.ControlRef
-  if s.pressed:
-    ctrl.setBackgroundColor(Color("#faa"))
-  elif s.hovered:
-    ctrl.setBackgroundColor(Color("#aaf"))
-  else:
-    ctrl.setBackgroundColor(Color("#afa"))
+scene.addChild(rect)
 
-scene.addChild(ctrl)
+rect.getBackground().setTexture(image)
+rect.resize(256, 128)
+rect.move(64, 64)
+rect.setStyle(style(
+  {
+    border-radius: 8
+  }
+))
+
 addMainScene(scene)
 showWindow()

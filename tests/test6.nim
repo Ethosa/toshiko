@@ -1,22 +1,28 @@
-# --- Test 6. Use StyleSheet object. --- #
+# --- Test 8. Use Drawable and Control. --- #
 import toshiko
 
 
-var mystyle = style(
+Window("Test 8")
+
+var
+  scene = Scene()
+  ctrl = Control()
+
+
+scene.addChild(ctrl)
+setBackgroundColor(Color("#eee"))
+ctrl.resize(256, 96)
+ctrl.move(64, 64)
+ctrl.setStyle(style(
   {
-    background-color: rgba(255, 125, 255, 0.7),
-    color: rgb(34, 34, 34),
-    font-size: 1,
-    text-align: center
-  })
-echo mystyle
-
-var background = Color(mystyle["background-color"])
-
-assert background == Color(255, 125, 255, 0.7)
-
-echo StyleSheet(
-  {
-    "background-color": "#f2f2f7"
+    background-color: turquoise,
+    border-radius: 8,
+    border-width: 1,
+    border-color: black,
+    shadow: yes,
+    shadow-offset: 3
   }
-)
+))
+
+addMainScene(scene)
+showWindow()

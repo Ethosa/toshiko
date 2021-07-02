@@ -1,31 +1,31 @@
-# --- Test 10. Anchor setting. --- #
+# --- Test 12. Use TextureRect object. --- #
 import toshiko
 
 
-Window("Test 10")
+Window("Test 12", 513, 513)
 
 var
   scene = Scene()
-  root = Control()
-  ctrl = Control()
+  texture1 = TextureRect()
+  texture2 = TextureRect()
+  texture3 = TextureRect()
 
-root.addChild(ctrl)
-root.setStyle(style(
-  {
-    size-anchor: 1,
-    background-color: rgb(100, 125, 195)
-  }
-))
+texture1.loadTexture("assets/3.jpg")
+texture2.loadTexture("assets/3.jpg")
+texture3.loadTexture("assets/3.jpg")
 
-ctrl.resize(128, 64)
-ctrl.addChild(ctrl)
-ctrl.setStyle(style(
-  {
-    position-anchor: 0.5,
-    background-color: rgb(195, 125, 195)
-  }
-))
+texture1.resize(256, 256)
+texture2.resize(256, 256)
+texture3.resize(256, 256)
 
-scene.addChild(root)
+texture1.setTextureMode(TEXTUREMODE_FILL_XY)
+texture2.setTextureMode(TEXTUREMODE_CROP)
+texture3.setTextureMode(TEXTUREMODE_KEEP_ASPECT_RATIO)
+
+scene.addChilds(texture1, texture2, texture3)
+
+texture2.move(257, 0)
+texture3.move(0, 257)
+
 addMainScene(scene)
 showWindow()

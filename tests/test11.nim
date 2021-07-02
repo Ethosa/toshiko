@@ -1,24 +1,26 @@
-# --- Test 11. Use Image in Drawable. --- #
+# --- Test 13. Use Label object --- #
 import toshiko
 
 
-Window("Test 11")
+Window("Test 13")
+
+# Note: This function may not be called because the standard font is specified in the global_settings.toshiko file
+# setStandardFont("assets/unifont.ttf", 16)  # global setting
 
 var
   scene = Scene()
-  image = load("assets/1.jpg")
-  rect = ColorRect()
+  label = Label()
 
-scene.addChild(rect)
-
-rect.getBackground().setTexture(image)
-rect.resize(256, 128)
-rect.move(64, 64)
-rect.setStyle(style(
+scene.addChild(label)
+label.setText("Hello, world!")
+label.resize(256, 128)
+label.setStyle(style(
   {
-    border-radius: 8
+    color: rgb(111, 174, 245),
+    background-color: rgba(240, 240, 240, 0.3),
+    border-radius: 8,
+    text-align: center
   }
 ))
-
 addMainScene(scene)
 showWindow()

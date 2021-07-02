@@ -1,26 +1,27 @@
-# --- Test 13. Use Label object --- #
+# --- Test 15. Build nodes with YML-like syntax. --- #
 import toshiko
 
 
-Window("Test 13")
+Window("Test 15")
 
-# Note: This function may not be called because the standard font is specified in the global_settings.toshiko file
-# setStandardFont("assets/unifont.ttf", 16)  # global setting
+build:
+  - Scene main:
+    name: "hello"
+    - ColorRect rect:
+      - ColorRect rect1:
+        color: Color("#d77")
+        rect_position: Vector2(64, 64)
 
-var
-  scene = Scene()
-  label = Label()
+rect1@on_ready(self):
+  echo "ready lol :p"
 
-scene.addChild(label)
-label.setText("Hello, world!")
-label.resize(256, 128)
-label.setStyle(style(
-  {
-    color: rgb(111, 174, 245),
-    background-color: rgba(240, 240, 240, 0.3),
-    border-radius: 8,
-    text-align: center
-  }
-))
-addMainScene(scene)
+rect1@on_hover(self, x, y):
+  rect1.setColor(Color("#84f"))
+
+rect1@on_out(self, x, y):
+  rect1.setColor(Color("#d77"))
+
+assert rect1.parent.parent.name == main.name
+
+addMainScene(main)
 showWindow()

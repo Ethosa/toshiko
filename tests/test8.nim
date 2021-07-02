@@ -1,28 +1,31 @@
-# --- Test 8. Use Drawable and Control. --- #
+# --- Test 10. Anchor setting. --- #
 import toshiko
 
 
-Window("Test 8")
+Window("Test 10")
 
 var
   scene = Scene()
+  root = Control()
   ctrl = Control()
 
-
-scene.addChild(ctrl)
-setBackgroundColor(Color("#eee"))
-ctrl.resize(256, 96)
-ctrl.move(64, 64)
-ctrl.setStyle(style(
+root.addChild(ctrl)
+root.setStyle(style(
   {
-    background-color: turquoise,
-    border-radius: 8,
-    border-width: 1,
-    border-color: black,
-    shadow: yes,
-    shadow-offset: 3
+    size-anchor: 1,
+    background-color: rgb(100, 125, 195)
   }
 ))
 
+ctrl.resize(128, 64)
+ctrl.addChild(ctrl)
+ctrl.setStyle(style(
+  {
+    position-anchor: 0.5,
+    background-color: rgb(195, 125, 195)
+  }
+))
+
+scene.addChild(root)
 addMainScene(scene)
 showWindow()
