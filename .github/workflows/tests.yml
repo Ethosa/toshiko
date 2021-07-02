@@ -92,6 +92,6 @@ jobs:
         run: |
           cp *.dll tests/
           cd tests
-          for %f in (test*.nim) do nim c --noNimblePath -d:mingw %f
+          for %f in $(test*.nim); do nim c --noNimblePath -d:mingw %f
         shell: bash
         if: runner.os == 'Windows'

@@ -7,4 +7,4 @@ srcDir = "src"
 license = "MIT"
 
 [Deps]
-Requires: "nim >= 1.4.0"
+Requires: "nim >= 1.2.0"
