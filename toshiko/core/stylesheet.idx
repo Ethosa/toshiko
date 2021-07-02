@@ -1,6 +1,7 @@
 StyleSheetObj	toshiko/core/stylesheet.html#StyleSheetObj	stylesheet: StyleSheetObj	
 StyleSheetRef	toshiko/core/stylesheet.html#StyleSheetRef	stylesheet: StyleSheetRef	
 StyleSheet	toshiko/core/stylesheet.html#StyleSheet,seq[tuple[string,string]]	stylesheet: StyleSheet(arg: seq[tuple[key, value: string]] = @[]): StyleSheetRef	
+StyleSheet	toshiko/core/stylesheet.html#StyleSheet,string	stylesheet: StyleSheet(arg: string): StyleSheetRef	
 StyleSheet	toshiko/core/stylesheet.html#StyleSheet,openArray[tuple[string,string]]	stylesheet: StyleSheet(arg: openArray[tuple[key, value: string]]): StyleSheetRef	
 `$`	toshiko/core/stylesheet.html#$,StyleSheetRef	stylesheet: `$`(a: StyleSheetRef): string	
 `[]`	toshiko/core/stylesheet.html#[],StyleSheetRef,string	stylesheet: `[]`(a: StyleSheetRef; key: string): string	

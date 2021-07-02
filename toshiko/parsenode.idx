@@ -1,4 +1,5 @@
 json2node	toshiko/parsenode.html#json2node,string	parsenode: json2node(src: string): SceneRef	
 xml2node	toshiko/parsenode.html#xml2node,string	parsenode: xml2node(src: string): SceneRef	
+xmlfile2node	toshiko/parsenode.html#xmlfile2node,string	parsenode: xmlfile2node(src: string): SceneRef	
 makeParsable	toshiko/parsenode.html#makeParsable,proc(string),	parsenode: makeParsable(nodefunc: proc (name: string = &quot;Node&quot;): NodeRef; str: system.string)	
 loadScene	toshiko/parsenode.html#loadScene,string	parsenode: loadScene(file: string): SceneRef	

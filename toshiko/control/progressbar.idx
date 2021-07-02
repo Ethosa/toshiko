@@ -8,3 +8,4 @@ enableIndeterminate	toshiko/control/progressbar.html#enableIndeterminate.e,Progr
 setMaxValue	toshiko/control/progressbar.html#setMaxValue.e,ProgressBarRef,int	progressbar: setMaxValue(self: ProgressBarRef; val: int)	
 setProgressColor	toshiko/control/progressbar.html#setProgressColor.e,ProgressBarRef,ColorRef	progressbar: setProgressColor(self: ProgressBarRef; color: ColorRef)	
 setValue	toshiko/control/progressbar.html#setValue.e,ProgressBarRef,int	progressbar: setValue(self: ProgressBarRef; val: int)	
+setStyle	toshiko/control/progressbar.html#setStyle.e,ProgressBarRef,StyleSheetRef	progressbar: setStyle(self: ProgressBarRef; s: StyleSheetRef)	

@@ -110,6 +110,8 @@ function main() {
     title="json2node(src: string): SceneRef"><wbr />json2node<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#xml2node%2Cstring"
     title="xml2node(src: string): SceneRef"><wbr />xml2node<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#xmlfile2node%2Cstring"
+    title="xmlfile2node(src: string): SceneRef"><wbr />xmlfile2node<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#makeParsable%2Cproc%28string%29%2C"
     title="makeParsable(nodefunc: proc (name: string = &quot;Node&quot;): NodeRef; str: system.string)"><wbr />make<wbr />Parsable<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#loadScene%2Cstring"
@@ -159,6 +161,19 @@ function main() {
 
 
 </dd>
+<a id="xmlfile2node,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#xmlfile2node%2Cstring"><span class="Identifier">xmlfile2node</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="nodes/scene.html#SceneRef"><span class="Identifier">SceneRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Defect</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span>
+    <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">XmlError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span>
+    <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>COnverts XML string to he new Scene object.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">src</span></tt> is a source XML string.</li>
+</ul>
+
+
+</dd>
 <a id="makeParsable,proc(string),"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#makeParsable%2Cproc%28string%29%2C"><span class="Identifier">makeParsable</span></a><span class="Other">(</span><span class="Identifier">nodefunc</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;Node&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">str</span><span class="Other">:</span> <span class="Identifier">system</span><span class="Other">.</span><span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -196,7 +211,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-25 11:15:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-07-02 13:08:58 UTC</small>
       </div>
     </div>
   </div>
