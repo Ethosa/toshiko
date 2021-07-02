@@ -25,7 +25,7 @@ jobs:
           - windows-latest
           #- macOS-latest
         nim_version:
-          - '1.2.0'
+          - '1.4.8'
           - 'stable'
     needs: before
     env:
@@ -82,7 +82,7 @@ jobs:
           cd tests
           for file in $(ls -v test*.nim); do
             echo "test: $file"
-            nim c $file
+            nim c --noNimblePath $file
             timeout 2 xvfb-run --auto-servernum --server-num=1 ./${file%%.nim} || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
           done
         shell: bash
@@ -92,33 +92,8 @@ jobs:
         run: |
           cp *.dll tests/
           cd tests
-          # FIXME:
-          # for file in $(ls -v test*.nim); do
-          #   echo "test: $file"
-          #   nim c $file
-          #   timeout 2 ./${file%%.nim} || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          # done
-          nim c test1.nim; timeout 2 ./test1 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test2.nim; timeout 2 ./test2 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test3.nim; timeout 2 ./test3 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test4.nim; timeout 2 ./test4 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test5.nim; timeout 2 ./test5 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test6.nim; timeout 2 ./test6 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test7.nim; timeout 2 ./test7 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test8.nim; timeout 2 ./test8 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test9.nim; timeout 2 ./test9 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test10.nim; timeout 2 ./test10 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          #nim c test11.nim; timeout 2 ./test11 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          #nim c test12.nim; timeout 2 ./test12 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          #nim c test13.nim; timeout 2 ./test13 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test14.nim; timeout 2 ./test14 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test15.nim; timeout 2 ./test15 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test16.nim; timeout 2 ./test16 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test17.nim; timeout 2 ./test17 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test18.nim; timeout 2 ./test18 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          #nim c test19.nim; timeout 2 ./test19 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test20.nim; timeout 2 ./test20 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test21.nim; timeout 2 ./test21 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          nim c test22.nim; timeout 2 ./test22 || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
+          for %f in (test*.nim) do
+            echo "test: $f"
+            nim c --noNimblePath -d:mingw %f
         shell: bash
         if: runner.os == 'Windows'

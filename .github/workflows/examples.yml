@@ -25,7 +25,7 @@ jobs:
           #- windows-latest
           #- macOS-latest
         nim_version:
-          - '1.2.0'
+          - '1.4.8'
           - 'stable'
     needs: before
     env:
@@ -60,7 +60,7 @@ jobs:
           for dir in hello_world calculator novel snake screensaver; do
             (
               cd "$dir"
-              nim c main.nim
+              nim c -d:mingw --noNimblePath main.nim
               timeout 2 xvfb-run --auto-servernum --server-num=1 ./main || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
             )
           done
